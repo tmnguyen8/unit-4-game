@@ -24,10 +24,12 @@
     text-align: center;
     height: 8rem;
     font-size: 1.2vw;
+    overflow: hidden;
 }
 .gameStatDisplay {
     font-size: 3vw;
     margin-top: 5px;
+    
 }
 
 .myCrystals {
@@ -36,7 +38,7 @@
     margin: 1% 10%;
     text-align: center;
 }
-.crystals {
+.crystal-image {
     padding: 5px 10px;
 }
 .scoreBoard {
