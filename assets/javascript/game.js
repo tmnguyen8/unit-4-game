@@ -55,38 +55,47 @@ for (var i = 0; i < crystalAvailable.length; i++) {
 
     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $(".myCrystals").append(imageCrystal);
-  };
+};
 
 //  When the crystal image is clicked
-  $(".crystal-image").on("click", function() {
+$(".crystal-image").on("click", function() {
 
-    // Determining the crystal's value requires us to extract the value from the data attribute.
-    // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
-    // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
-    // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+// Determining the crystal's value requires us to extract the value from the data attribute.
+// Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+// Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+// Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
 
-    var crystalValue = ($(this).attr("data-crystalvalue"));
-    crystalValue = parseInt(crystalValue);
-    // We then add the crystalValue to the user's "counter" which is a global variable.
-    // Every click, from every crystal adds to the global counter.
-    totalScore += crystalValue;
+var crystalValue = ($(this).attr("data-crystalvalue"));
+crystalValue = parseInt(crystalValue);
+// We then add the crystalValue to the user's "counter" which is a global variable.
+// Every click, from every crystal adds to the global counter.
+totalScore += crystalValue;
 
-    // All of the same game win-lose logic applies. So the rest remains unchanged.
+// All of the same game win-lose logic applies. So the rest remains unchanged.
+$("#totalScore").text(totalScore);
+
+if (totalScore === targetNum) {
+$("#totalScore").text(totalScore);
+    alert(`You win!!! your total score is ${totalScore} and the target number is ${targetNum}`);
+    numWin ++;
+    $("#numWin").text(numWin);
+    totalScore = 0;
     $("#totalScore").text(totalScore);
+}
 
-    if (totalScore === targetNum) {
-      alert("You win!");
-      numWin ++;
-      $("#numWin").text(numWin);
-      totalScore = 0;
-      $
-    }
+else if (totalScore >= targetNum) {
+    
+    alert(`You lose!!! your total score is ${totalScore} and the target number is ${targetNum}`);
+    numLoss ++;
+    $("#numLoss").text(numLoss);
+    totalScore = 0;
+    $("#totalScore").text(totalScore);
+}
 
-    else if (totalScore >= targetNum) {
-      alert("You lose!!");
-      numLoss ++;
-      $("#numLoss").text(numLoss);
-      totalScore = 0;
-    }
+});
 
-  });
+// TO DO WHEN I HAVE TIME - IMPROVEMENT
+// *************************************
+// Add flip functionality to flip the image and reveal the score of each crystal
+//      https://github.com/nnattawat/flip
+//      https://www.ostraining.com/blog/coding/jquery-flip/
